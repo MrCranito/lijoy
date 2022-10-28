@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:lifoy/core/fakeData/events.dart';
+import 'package:lifoy/core/services/event.service.dart';
+import 'package:lifoy/modules/list-event/list-event.view.dart';
 
-import '../map/map.dart';
+import '../map/map.view.dart';
 
-class WrapperScreen extends StatefulWidget {
-  const WrapperScreen({super.key});
+class WrapperView extends StatefulWidget {
+  const WrapperView({super.key});
 
   @override
-  _WrapperScreenState createState() => _WrapperScreenState();
+  _WrapperViewState createState() => _WrapperViewState();
 }
 
-class _WrapperScreenState extends State<WrapperScreen> {
+class _WrapperViewState extends State<WrapperView> {
   PageController pageController = PageController(initialPage: 0);
   int indexPage = 0;
 
@@ -23,7 +26,7 @@ class _WrapperScreenState extends State<WrapperScreen> {
           physics: const NeverScrollableScrollPhysics(),
           controller: pageController,
           onPageChanged: onPageChanged,
-          children: <Widget>[MapView()],
+          children: <Widget>[ListEventView(), MapView(), ListEventView(), MapView()],
         ),
         bottomNavigationBar: SizedBox(
             height: 70,
@@ -41,7 +44,7 @@ class _WrapperScreenState extends State<WrapperScreen> {
                       },
                     ),
                     IconButton(
-                      icon: Icon(Icons.search),
+                      icon: Icon(Icons.explore),
                       onPressed: () {
                         pageController.animateToPage(1,
                             duration: pageTurnDuration, curve: pageTurnCurve);
@@ -62,7 +65,10 @@ class _WrapperScreenState extends State<WrapperScreen> {
                       },
                     ),
                   ],
-                ))));
+                )
+              )
+            )
+          );
   }
 
   void navigationTapped(int page) {

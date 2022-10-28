@@ -1,7 +1,17 @@
+import 'package:algolia/algolia.dart';
 import 'package:flutter/material.dart';
-import 'package:lifoy/modules/wrapper/wrapper.dart';
+import 'package:lifoy/modules/map/map.view.dart';
+import 'package:lifoy/modules/wrapper/wrapper.view.dart';
 
-void main() {
+
+class Application {
+  static final Algolia algolia = Algolia.init(
+    applicationId: 'J2J7PPV1CC',
+    apiKey: 'bbc73e83665158d9e90b9b6b28904e20',
+  );
+}
+
+Future<void> main() async {
   runApp(const MyApp());
 }
 
@@ -25,7 +35,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: const WrapperScreen(),
+      home: const WrapperView(),
     );
   }
 }

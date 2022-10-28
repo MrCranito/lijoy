@@ -21,3 +21,5 @@ final fakeMapMarkers = [
       location: LatLng(43.547610, 1.485441),
       rating: 2)
 ];
+
+
